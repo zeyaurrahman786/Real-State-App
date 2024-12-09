@@ -1,0 +1,115 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h3>Edit your Listing</h3>
+    <form
+      method="POST"
+      action="/listings/<%= listing._id %>?_method=PUT"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <!-- Corrected label spelling -->
+        <label for="title" class="form-label">Title</label>
+        <!-- Corrected -->
+        <input
+          name="listing[title]"
+          value="<%= listing.title %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Title looks good!</div>
+      </div>
+
+      <div class="mb-3">
+        <!-- Corrected label spelling -->
+        <label for="description" class="form-label">Description</label>
+        <!-- Corrected -->
+        <textarea name="listing[description]" class="form-control" required>
+<%= listing.description %></textarea
+        >
+        <div class="invalid-feedback">Please enter a short description</div>
+      </div>
+
+      <div class="mb-3">
+        <!-- Corrected label spelling -->
+        <label for="image.filename" class="form-label">Image Filename</label>
+        <!-- Corrected -->
+        <input
+          name="listing[image][filename]"
+          value="<%= listing.image.filename %>"
+          type="text"
+          class="form-control"
+        />
+        <div class="invalid-feedback">Please enter a valid image filename</div>
+      </div>
+
+      <div class="mb-3">
+        Original Listing Image <br />
+        <!-- Added class and style for responsive image -->
+        <img
+          src="<%= originalImageUrl %>"
+          alt="Existing Image"
+          style="width: 30% !important; height: auto !important"
+        />
+      </div>
+
+      <div class="mb-3">
+        <!-- Corrected label spelling -->
+        <label for="image.url" class="form-label">Upload New Image</label>
+        <!-- Corrected -->
+        <input name="listing[image][url]" type="file" class="form-control" />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <!-- Corrected label spelling -->
+          <label for="price" class="form-label">Price</label>
+          <!-- Corrected -->
+          <input
+            name="listing[price]"
+            value="<%= listing.price %>"
+            type="number"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Please enter a valid price</div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <!-- Corrected label spelling -->
+          <label for="country" class="form-label">Country</label>
+          <!-- Corrected -->
+          <input
+            name="listing[country]"
+            value="<%= listing.country %>"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Please enter a valid Country</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <!-- Corrected label spelling -->
+        <label for="location" class="form-label">Location</label>
+        <!-- Corrected -->
+        <input
+          name="listing[location]"
+          value="<%= listing.location %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Please enter a valid location</div>
+      </div>
+
+      <br /><br />
+      <button class="btn btn-dark edit-btn mt-3">Edit</button>
+      <br /><br />
+    </form>
+  </div>
+</div>
